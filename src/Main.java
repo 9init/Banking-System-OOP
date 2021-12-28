@@ -183,11 +183,6 @@ public class Main {
     }
 
     private static void viewTransactionHandler(Customer user){
-        try {
-
-        }catch (Exception e){
-            throw e;
-        }
         Server.printAllMyTransaction(user);
     }
 
