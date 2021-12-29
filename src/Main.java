@@ -17,9 +17,10 @@ public class Main {
             System.out.println("1) Login");
             System.out.println("2) Register");
             System.out.print("Your action: ");
-            switch (scanner.nextInt()){
-                case 1 -> loginHandler();
-                case 2 -> registerHandler();
+            switch (scanner.next()){
+                case "1" -> loginHandler();
+                case "2" -> registerHandler();
+                default -> System.out.println("Invalid input. Try again");
             }
         }
 
@@ -46,6 +47,12 @@ public class Main {
                 if(!(input.equals("y") || input.equals("yes")))
                     return;
             }
+            catch (Exception e){
+                System.out.print("Invalid input. Try again? (y/yes, n/no): ");
+                String input = scanner.next().toLowerCase();
+                if(!(input.equals("y") || input.equals("yes")))
+                    return;
+            }
         }
 
     }
@@ -65,6 +72,12 @@ public class Main {
             }catch (UserAlreadyExistException e){
                 System.out.println("\nUsername already exist. Try again");
             }
+            catch (Exception e){
+                System.out.print("Invalid input. Try again? (y/yes, n/no): ");
+                String input = scanner.next().toLowerCase();
+                if(!(input.equals("y") || input.equals("yes")))
+                    return;
+            }
         }
 
         System.out.println("Registration done");
@@ -82,9 +95,6 @@ public class Main {
                 System.out.println();
                 System.out.print("Enter Option [1-6]: ");
                 int input = scanner.nextInt();
-                if(!(input >=1 && input <= 6))
-                    throw new Exception();
-
                 switch (input){
                     case 1 -> depositHandler(user);
                     case 2 -> withDrawHandler(user);
@@ -92,6 +102,7 @@ public class Main {
                     case 4 -> accountInfoHandler(user);
                     case 5 -> viewTransactionHandler(user);
                     case 6 -> { break loop; }
+                    default -> throw new Exception();
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -123,6 +134,12 @@ public class Main {
                 if(!(input.equals("y") || input.equals("yes")))
                     return;
             }
+            catch (Exception e){
+                System.out.print("Invalid input. Try again? (y/yes, n/no): ");
+                String input = scanner.next().toLowerCase();
+                if(!(input.equals("y") || input.equals("yes")))
+                    return;
+            }
         }
 
     }
@@ -141,6 +158,11 @@ public class Main {
                 break;
             } catch (NoEnoughCurrency e) {
                 System.out.print("The selected amount exceeds your balance. Try again? (y/yes, n/no): ");
+                String input = scanner.next().toLowerCase();
+                if(!(input.equals("y") || input.equals("yes")))
+                    return;
+            } catch (Exception e){
+                System.out.print("Invalid input. Try again? (y/yes, n/no): ");
                 String input = scanner.next().toLowerCase();
                 if(!(input.equals("y") || input.equals("yes")))
                     return;
@@ -179,6 +201,7 @@ public class Main {
                 if(!(input.equals("y") || input.equals("yes")))
                     return;
             }
+
         }
     }
 
