@@ -40,12 +40,12 @@ public class Transaction {
         this.senderPrevAmount = sender.getCurrency();
 
         switch (transactionType){
-            case DEPOSIT -> {
+            case WITH_DRAW -> {
                 if(sender.getCurrency() < amount)
                     throw new NoEnoughCurrency();
                 sender.setCurrency(sender.getCurrency() - amount);
             }
-            case WITH_DRAW -> sender.setCurrency(sender.getCurrency() + amount);
+            case DEPOSIT -> sender.setCurrency(sender.getCurrency() + amount);
         }
 
         this.senderCurrentAmount = sender.getCurrency();
@@ -89,7 +89,7 @@ public class Transaction {
         return senderPrevAmount;
     }
 
-    public int getReceiverPrevAmount() {
+        public int getReceiverPrevAmount() {
         return receiverPrevAmount;
     }
 
